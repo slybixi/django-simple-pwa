@@ -57,7 +57,7 @@ def get_pwa_config():
 		"dir": "ltr",
 		"description": "Blockchain Payment, Data Management & Security Service",       
  ​                ​"version"​: ​"1."​,
-        "manifest_version": "1.0",,
+        "manifest_version": "1.0",
 		"permissions": [
 			"notifications",
 			"webRequest"
