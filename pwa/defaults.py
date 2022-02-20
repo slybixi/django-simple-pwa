@@ -55,9 +55,9 @@ def get_pwa_config():
 		],
 		"lang": "en",
 		"dir": "ltr",
-		"description": "Blockchain Payment, Data Management & Security Service",       
-                "version": "1.",
-        	"manifest_version": "1.0",
+		"description": "Blockchain Payment, Data Management & Security Service",
+        "version": "1.",
+        "manifest_version": "1.0",
 		"permissions": [
 			"notifications",
 			"webRequest"
@@ -153,4 +153,3 @@ def get_app():
 			return settings.PWA_APP
 	except:
 		return APP
-
