@@ -153,3 +153,4 @@ def get_app():
 			return settings.PWA_APP
 	except:
 		return APP
+
