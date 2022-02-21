@@ -31,9 +31,5 @@ def offline(request):
         'meta': meta,
         'airdrop': airdrop,
         'airdrop_meta': airdrop_meta
-    }
-    
-    try:
-	return render(request, 'pwa/offline.html', context)
-    except:
-	return render(request, 'pwa/pwa_offline.html', context)
+    }    
+    return render(request, 'pwa/pwa_offline.html', context)
