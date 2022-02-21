@@ -46,7 +46,6 @@
 		{% pwa_meta_data %}
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>{% block title %} {% for m in meta %} <title>{{ m.title }}</title> {% endfor %} {% endblock title %}</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		{% block extrastyles %}
@@ -71,7 +70,7 @@
 	<body>	
 		<!-- Page Title  -->
 		{% for m in meta %}
-		<title>{{ m.title }}</title>
+		<title> {{ m.title }} </title>
 		{% endfor %}
 		
 		{% block main %}
