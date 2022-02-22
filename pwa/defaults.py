@@ -84,7 +84,21 @@ def get_service_worker():
 		'/static/pwa/images/dino.gif',
 		'/static/js/bootstrap.min.css',
 		'/static/js/popper.min.js',
-		'/static/js/bootstrap.min.js',		
+		'/static/js/bootstrap.min.js',
+                '/static/css/vendor-bundle.css',
+		'/static/css/style-azure.css',
+		'/static/css/font-awesome-5.13.0.css',
+		'/static/css/font-awesome-4.7.0.css',
+		'/static/css/smooth-scrow.css',
+		'/static/css/back-to-top.css',
+		'/static/js/jquery.min.js',
+		'/static/js/angular.js',
+		'/static/js/jquery-bundle.js',
+		'/static/js/scripts.js',
+		'/static/js/back-to-top.js',
+		'/static/js/bg_particles.js',
+		'/static/js/smooth_page_scroll.js',
+		'/static/js/jquery.collapser.js',		
 		];
 	const self = this;
 	
