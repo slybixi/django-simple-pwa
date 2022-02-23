@@ -55,14 +55,14 @@ def get_pwa_config():
 		],
 		"lang": "en",
 		"dir": "ltr",
-		"description": "Blockchain Payment, Data Management & Security Service",
-        "version": "1.",
-        "manifest_version": "1.0",
+		"description": "Progressive Web app powerd by Django",
+		"version": "1.",
+		"manifest_version": "1.0",
 		"permissions": [
 			"notifications",
 			"webRequest"
 		],
-		"author": "Escrow Teller Team"
+		"author": "PWA-django"
 		}
 	try:
 		if settings.PWA_CONFIG and settings.PWA_CONFIG != {}:
@@ -82,23 +82,24 @@ def get_service_worker():
 		'/manifest.json',
 		'/offline',
 		'/static/pwa/images/dino.gif',
-		'/static/js/bootstrap.min.css',
-		'/static/js/popper.min.js',
-		'/static/js/bootstrap.min.js',
-                '/static/css/vendor-bundle.css',
-		'/static/css/style-azure.css',
-		'/static/css/font-awesome-5.13.0.css',
-		'/static/css/font-awesome-4.7.0.css',
-		'/static/css/smooth-scrow.css',
-		'/static/css/back-to-top.css',
-		'/static/js/jquery.min.js',
-		'/static/js/angular.js',
-		'/static/js/jquery-bundle.js',
-		'/static/js/scripts.js',
-		'/static/js/back-to-top.js',
-		'/static/js/bg_particles.js',
-		'/static/js/smooth_page_scroll.js',
-		'/static/js/jquery.collapser.js',		
+
+		'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css',
+		'https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js',
+		'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css',
+		'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+        '/static/pwa/css/smooth-scrow.css',
+		'/static/pwa/css/back-to-top.css',
+		'/static/pwa/js/jquery.min.js',
+        '/static/pwa/js/angular.js',
+		'/static/pwa/js/jquery-bundle.js',
+		'/static/pwa/js/scripts.js',
+		'/static/pwa/js/back-to-top.js',
+		'/static/pwa/js/bg_particles.js',
+		'/static/pwa/js/smooth_page_scroll.js',
+		'/static/pwa/js/jquery.collapser.js',
+        '/static/pwa/css/vendor-bundle.css',
+		'/static/pwa/css/style-azure.css',
 		];
 	const self = this;
 	
