@@ -1,525 +1,401 @@
 {% load static pwa %}
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="Cache-control" content="public">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 		{% pwa_meta_data %}
-		<title>{% block title %}{% endblock title %}</title>
+		<title>{% block title %} {% for m in meta %} {{ m.title }} {% endfor %} {% endblock title %}</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<!-- Favicons -->
+		<link href="{% static 'pwa/img/favicon.png' %}" rel="icon">
+		<link href="{% static 'pwa/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 		{% block extrastyles %}
-			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-			<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-			<link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
-			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-			<link rel="stylesheet" href="https://www.escrowteller.com/static/css/vendor-bundle.css">
-			<link rel="stylesheet" href="https://www.escrowteller.com/static/css/style-azure.css">
-			<link rel="stylesheet" href="{% static 'pwa/css/smooth-scrow.css' %}">
+			<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+			<!-- Vendor CSS Files -->
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+			  
+			<!-- Template Main CSS File -->
+			<link href="{% static 'pwa/css/style.css' %}" rel="stylesheet">
 		{% endblock extrastyles %}
 	</head>
-	<body>	
-		<!--[if lt IE 7]>
-			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-		<![endif]-->
+	<body>			
 		{% for m in meta %}
 		<title> {{ m.title }} </title>
 		{% endfor %}
 		{% block main %}
-			<div class="nk-wrap">		
-			<!-- Header @s -->
-				<header class="nk-header page-header is-transparent is-sticky is-shrink is-dark" id="header">
-			<!-- Offline Alert @s -->
 				<div style="position:fixed!important;z-index:55;width:100%;">
 					<div class="text-center">									
-						<p style="margin-bottom:0!important;color:#425050!important;" class="alert-warning mx-auto"> Freemode activated!</p> <p class="alert-warning mx-auto" style="margin-bottom:0!important;background-color:white!important;font-size:12px!important;color:#425050!important;">Check your internet connections or just cruise in freemode.</p>
+						<p style="margin-bottom:0!important;color:#425050!important;" class="alert-warning mx-auto"> Freemode activated!</p> <p class="alert-warning mx-auto" style="margin-bottom:0!important;background-color:white!important;font-size:12px!important;color:#b1255f!important;">Check your internet connections or just cruise in freemode.</p>
 					</div>
 				</div>
-			<!-- Offline Alert @e -->
-			<!-- Header @s -->
-				<div class="header-main" style="margin-top:30px!important;">
-					<div class="header-container container">
-						<div class="header-wrap">
-							<!-- Logo @s -->
-								<div class="header-logo header-logo-ls logo animated" data-animate="fadeInDown" data-delay=".65">
-									<a href="{% url 'index' %}" class="logo-link">
-										<img class="logo-dark" src="{% static 'pwa/images/logo.png' %}" srcset="{% static 'pwa/images/logo2x.png' %}" alt="logo"><img class="logo-light" src="{% static 'pwa/images/logo-white.png' %}" srcset="{% static 'pwa/images/logo-white2x.png' %}" alt="logo">
-									</a>
-								</div>
-							<!-- Menu Toogle @s -->
-								<div class="header-nav-toggle">
-									<a href="#" class="navbar-toggle" data-menu-toggle="example-menu-04">
-										<div class="toggle-line"><span></span></div>
-									</a>
-								</div>
-							<!-- Menu @s -->
-								<div class="header-navbar header-navbar-s3">
-									<nav class="header-menu justify-content-between" id="example-menu-04">
-										<ul class="menu menu-s2 animated" data-animate="fadeInDown" data-delay=".75">
-											<li class="menu-item">
-												<a class="menu-link nav-link" href="https://escrowteller.com#ico">About Escrow Teller</a>
-											</li>
-											<li class="menu-item">
-												<a class="menu-link nav-link" href="https://escrowteller.com#token">Token</a>				
-											</li>
-											<li class="menu-item">
-												<a class="menu-link nav-link" href="https://escrowteller.com#airdrop">Airdrop</a>
-											</li>
-											<li class="menu-item">
-												<a class="menu-link nav-link" href="https://escrowteller.com#roadmap">Roadmap</a>
-											</li>											
-										</ul>
-									</nav>
-								</div>
-							<!-- .header-navbar @e -->
+
+			  <!-- ======= Header ======= -->
+			  <header id="header" style="top:30px!important;" class="header fixed-top">
+				<div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+				  <a href="/" class="logo d-flex align-items-center">
+					<img src="{% static 'pwa/img/logo.png' %}" alt="">
+					<span>Escrow Teller</span>
+				  </a>
+
+				  <nav id="navbar" class="navbar">
+					<ul>
+					  <li><a class="nav-link scrollto active" href="#">Home</a></li>
+					  <li><a class="nav-link scrollto" href="#about-us">About Us</a></li>
+					  <li><a class="nav-link scrollto" href="#token">Token</a></li>
+					  <li><a class="nav-link scrollto" href="#roadmap">Roadmap</a></li>
+					  <li><a class="nav-link scrollto" href="#airdrop">Airdrop</a></li>
+					</ul>
+					<i class="bi bi-list mobile-nav-toggle"></i>
+				  </nav><!-- .navbar -->
+
+				</div>
+			  </header><!-- End Header -->
+
+			  <!-- ======= Hero Section ======= -->
+			  <section id="hero" class="hero d-flex align-items-center">
+
+				<div class="container">
+				  <div class="row">
+					<div class="col-lg-6 d-flex flex-column justify-content-center">
+					  <h1 data-aos="fade-up">Blockchain Payment, Data Management & Security Service</h1>
+					  <h2 data-aos="fade-up" data-aos-delay="400">fast, secure, flexible, enhanced payment and data management system.</h2>
+					  <div data-aos="fade-up" data-aos-delay="600">
+						<div class="text-center text-lg-start">
+						  <a href="https://t.me/eteller_channel" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+							<span>Join Us on Telegram</span>
+							<i class="bi bi-arrow-right"></i>
+						  </a>
 						</div>
+					  </div>
 					</div>
+					<div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+					  <img src="{% static 'pwa/img/hero-img.png' %}" class="img-fluid" alt="">
+					</div>
+				  </div>
 				</div>
-			<!-- .header-main @e -->
-			<!-- Banner @s -->
-				<div class="header-banner bg-theme-alt">
-					<div class="nk-banner bg-grad-special">
-						<div class="banner banner-fs banner-single bg-grad-special-alt tc-light">
-							<div class="banner-wrap mt-auto">
-								<div class="container">
-									<div class="row align-items-center justify-content-center justify-content-lg-between">
-										<div class="col-lg-6 order-lg-last animated" data-animate="fadeInUp" data-delay="1.25">
-											<div class="banner-gfx banner-gfx-re-s5">
-												<img src="{% static 'pwa/images/header/banner_vector.png' %}" alt="header">
-											</div>
-										</div>
-									<!-- .col -->
-										<div class="col-lg-6 text-center text-lg-left">
-											<div class="banner-caption cpn tc-light">
-												<div class="cpn-head">
-													<h1 class="title title-xl-2 title-lg title-semibold animated" data-animate="fadeInUp" data-delay="1.35">Blockchain Payment, Data Management & Security Service</h1>
-												</div>
-												<div class="cpn-text">
-													<p class="lead-s2 animated" data-animate="fadeInUp" data-delay="1.45">fast, secure, flexible, enhanced payment and data management system.</p>
-												</div>
-												<div class="cpn-action">
-													<ul class="cpn-links animated" data-animate="fadeInUp" data-delay="1.55">
-														<li><a href="https://t.me/eteller_airdropbot" class="btn btn-md btn-grad">JOIN OUR AIRDROP</a></li>
-														<li><a href="https://escrowteller.com#token" class="btn btn-md btn-grad">Token Distribution</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									<!-- .col -->
-									</div>
-							<!-- .row -->
-								</div>
+
+			  </section><!-- End Hero -->
+
+			  <main id="main">
+				<section id="features" class="features">
+					<div id="about-us" class="container" data-aos="fade-up">
+				<!-- Feature Tabs -->
+					<div class="row feture-tabs" data-aos="fade-up">
+					  <div class="col-lg-6">
+						<h3>We are building a fast, trusted, enhanced crypto payment & data management service.</h3>
+
+						<!-- Tabs -->
+						<ul class="nav nav-pills mb-3">
+						  <li>
+							<a class="nav-link active" data-bs-toggle="pill" href="#tab1">WHY ESCROW TELLER</a>
+						  </li>
+						  <li>
+							<a class="nav-link" data-bs-toggle="pill" href="#tab2">OUR MISSION</a>
+						  </li>
+						</ul><!-- End Tabs -->
+
+						<!-- Tab Content -->
+						<div class="tab-content">
+
+						  <div class="tab-pane fade show active" id="tab1">
+							<div class="d-flex align-items-center mb-2">
+							  <i class="bi bi-check2"></i>
+							  <h4>We are solving a crucial data privacy and security related problem.</h4>
 							</div>
-							<div class="nk-block mt-auto pdb-r"></div>
-						<!-- .block @e -->
-							<div class="nk-ovm shape-u shape-contain shape-left-top"></div>
-						<!-- Place Particle Js -->
-							<canvas class="canvas particles-container particles-bg animated" data-pt-base="#00c0fa" data-pt-base-op=".3" data-pt-line="#2b56f5" data-pt-line-op=".5" data-pt-shape="#00c0fa" data-pt-shape-op=".2"></canvas>
+							<div class="d-flex align-items-center mb-2">
+							  <i class="bi bi-check2"></i>
+							  <h4>We are creating a unique blockchain payment service runned by $eTELLER, our utility token.</h4>
+							</div>
+						  </div><!-- End Tab 1 Content -->
+
+						  <div class="tab-pane fade show" id="tab2">
+							<p>Our mission is to create a blockchain powered payment system targeted at addressing financial transaction challenges & limitations of financial sector & payment service providers expecially in Africa. We will provide blockchain enhance payment services facilitating fast, secure, flexible, low-cost domestic & international payments while connecting global financial systems. The high level of security presented by a distributed ledger system offers enormous benefits to establishing a secure data network. Business offering services in consumer products and services adopt blockchain technology to secure consumers data record. Data tempering & breach has become a menace in Africa, with most parties entrusted with the task of protecting sensitive documents e.g. Wills, election results, examination results, certificates are not living up to their expectation. Taking advantage of blockchain immutability, Escrow Teller aims to Solve data tempering in Africa, offering rapid advancements in data security by implementing strong authentication and cryptography key vaulting mechanisms. Our aims is to integrate all companies, organizations, employees, crypto users and businesses into our ecosystem, which will make business truly efficient, fast, transparent, reliable and secured.</p>
+						  </div><!-- End Tab 2 Content -->
+
 						</div>
-					</div><!-- .nk-banner -->
-				</div><!-- .header-banner @e -->
-			</header>
+
+					  </div>
+					</div><!-- End Feature Tabs -->
+					</div>
+				</section>
 				
-			<!-- .header-main @e -->
-			<main class="nk-pages bg-transparent">
-			<!-- Start Section -->
-				<section class="section-intro bg-theme-alt tc-light pb-0 ov-h" id="ico">
-					<div class="container">
-						<div class="nk-block nk-block-about">
-							<div class="row align-items-center justify-content-center justify-content-lg-between gutter-vr-30px">
-								<div class="col-lg-9 col-sm-9 pdb-m">
-									<div class="nk-block-text text-lg-left">
-										<h6 class="title title-xs title-s1 tc-primary animated" data-animate="fadeInUp" data-delay=".1">What Escrow Teller is about</h6>
-										{% for h in home %}
-										<h2 class="title title-semibold animated" data-animate="fadeInUp" data-delay=".2"> {{ h.sub_desc1 }}</h2>
-										<p class="lead-s2 animated" data-animate="fadeInUp" data-delay=".3">{{ h.sub_desc2 }}</p>
-										<h6 class="title title-xs title-s1 tc-primary animated" data-animate="fadeInUp" data-delay=".1">Our Mission</h6>
-										<p class="animated truncate" data-animate="fadeInUp" data-delay=".4">{{ h.desc }}</p>
-										{% endfor %}
-									</div>
-								</div>
-							</div>
+				<!-- ======= Values Section ======= -->
+				<section id="values" class="values">
+
+				  <div class="container" data-aos="fade-up">
+
+					<header class="section-header">
+					  <p>We are confident of achieving these milestones.</p>
+					</header>
+
+					<div class="row">
+
+					  <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+						<div class="box">
+						  <img src="{% static 'pwa/img/values-1.png' %}" class="img-fluid" alt="">
+						  <h3>Build a Reliable Service Network</h3>
+						  <p>Integrate people and businesses to our ecosystem through Teller services.</p>
 						</div>
-					<!-- .block @e -->
+					  </div>
+
+					  <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
+						<div class="box">
+						  <img src="{% static 'pwa/img/values-2.png' %}" class="img-fluid" alt="">
+						  <h3>Easy to use Payment Service</h3>
+						  <p>Create an easy to use powerful payment service that will exceed all payment expectations.</p>
+						</div>
+					  </div>
+
+					  <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
+						<div class="box">
+						  <img src="{% static 'pwa/img/values-3.png' %}" class="img-fluid" alt="">
+						  <h3>Enhanced Data Security</h3>
+						  <p>An efficient system that provides best data privacy and security practices.</p>
+						</div>
+					  </div>
+
 					</div>
-				<!-- .conatiner  -->
-					<div class="ui-mask-left ui-mask-s1"></div>
-				</section>
-			<!-- // -->
-				<section class="section  bg-theme-alt tc-light pb-0 ov-v">
-					<div class="container">
-						<div class="section-head section-head-s3 wide-auto-sm">
-							<h6 class="title title-xs title-s1 tc-primary animated" data-animate="fadeInUp" data-delay=".1">Why Escrow Teller</h6>
-							<p class="animated" data-animate="fadeInUp" data-delay=".3">{% for h in home %} {{ h.why_desc }} {% endfor %}</p>
+
+				  </div>
+
+				</section><!-- End Values Section -->
+
+				<!-- ======= Features Section ======= -->
+				<section id="features" class="features">
+
+				  <div class="container" data-aos="fade-up">
+				  <div id="token">
+
+					<header class="section-header"><p>Tokenomics</p></header>
+					<div style="font-size:12px;text-align:left;">		
+					  <br/>
+					  <h6>TOKEN TICKER:  $eTELLER</h6>
+					  <h6>TOKEN TYPE:  UTILITY TOKEN</h6>
+					  <h6>TOTAL SUPPLY:  500,000,000 $eTELLER</h6>
+					  <h6>BLOCKCHAIN:  BINANCE CHAIN</h6>
+					  <h6>TOKEN STANDARD:  BEP 20</h6>
+					  </div>
+
+					<!-- Feature Icons -->
+					<div class="row feature-icons" data-aos="fade-up">
+					  <h3>Token Distribution</h3>
+
+					  <div class="row">
+
+						<div class="col-xl-4 text-center" data-aos="fade-right" data-aos-delay="100">
+						  <img src="{% static 'pwa/img/features-3.png' %}" class="img-fluid p-4" alt="">
 						</div>
-						<div class="nk-block">
-							<div class="row justify-content-center gutter-vr-30px">
-								<div class="col-lg-4 col-sm-8">
-									<div class="feature text-center animated" data-animate="fadeInUp" data-delay=".4">
-										<div class="feature-icon feature-icon-s8">
-											<img src="{% static 'pwa/images/gfx/gfx-sm-e.png' %}" alt="feature">
-										</div>
-										<div class="feature-text">
-											<h5 class="title title-md">Build Service Network</h5>
-											<p>Integrate people and businesses to our ecosystem through Teller services.</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-sm-8">
-									<div class="feature text-center animated" data-animate="fadeInUp" data-delay=".5">
-										<div class="feature-icon feature-icon-s8">
-											<img src="{% static 'pwa/images/gfx/et_mobile.png' %}" alt="feature">
-										</div>
-										<div class="feature-text">
-											<h5 class="title title-md">Easy to use Payment Service</h5>
-											<p>Create an easy to use powerful payment service that will exceed all payment expectations.</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-sm-8">
-									<div class="feature text-center animated" data-animate="fadeInUp" data-delay=".6">
-										<div class="feature-icon feature-icon-s8">
-											<img src="{% static 'pwa/images/gfx/gfx-sm-g.png' %}" alt="feature">
-										</div>
-										<div class="feature-text">
-											<h5 class="title title-md">Enhanced Data Security</h5>
-											<p>An efficient system that provides best data privacy and security practices.</p>
-										</div>
-									</div>
-								</div>
+
+						<div class="col-xl-8 d-flex content">
+						  <div class="row align-self-center gy-4">
+
+							<div class="col-md-6 icon-box" data-aos="fade-up">
+							  <div>
+								<h4>Developers</h4>
+								<p>25,000,000‬ $eTELLER (5%)</p>
+							  </div>
 							</div>
-							<div class="text-center pdt-r">
-								<a href="https://t.me/eteller_channel" class="animated fadeInUp" data-animate="fadeInUp" data-delay=".6" style="visibility: visible; animation-delay: 0.6s;" class="tc-primary link link-light link-xs"><em class="link-icon fa fa-paper-plane"></em><span>Join us on Telegram</span></a>
+
+							<div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+							  <div>
+								<h4>Partners</h4>
+								<p>25,000,000‬ $eTELLER (5%)</p>
+							  </div>
 							</div>
+
+							<div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+							  <div>
+								<h4>Airdrop, Incentives & Rewards</h4>
+								<p>50,000,000‬ $eTELLER (10%)</p>
+							  </div>
+							</div>
+
+							<div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+							  <div>
+								<h4>Foundation</h4>
+								<p>100,000,000‬ $eTELLER (20%)</p>
+							  </div>
+							</div>
+
+							<div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+							  <div>
+								<h4>Private Sale</h4>
+								<p>100,000,000‬ $eTELLER (20%)</p>
+							  </div>
+							</div>
+
+							<div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
+							  <div>
+								<h4>CrowdSale</h4>
+								<p>200,000,000‬ $eTELLER (40%)</p>
+							  </div>
+							</div>
+
+						  </div>
 						</div>
+
+					  </div>
+
+					</div><!-- End Feature Icons -->
 					</div>
-					<div class="ui-mask-right ui-mask-s2"></div>
-				</section>
-			<!-- // -->
-				<section class="section section-tokensale bg-grad-vr-alt-to-theme tc-light pb-0 ov-v has-ovm" id="token">
-					<div class="container">
-					<!-- Block @s -->
-						<div class="nk-block nk-block-token">
-							<div class="section-head section-head-s3 wide-auto-sm text-center">
-								<h6 class="title title-xs title-s1 tc-primary animated fadeInUp" data-animate="fadeInUp" data-delay=".1" style="visibility: visible; animation-delay: 0.1s;">Token</h6>
-								<h2 class="title animated fadeInUp" data-animate="fadeInUp" data-delay=".2" style="visibility: visible; animation-delay: 0.2s;">Tokenomics</h2>
-								<p class="animated fadeInUp" data-animate="fadeInUp" data-delay=".3" style="visibility: visible; animation-delay: 0.3s;"><i class="tc-primary">TOKEN TICKER:</i>&nbsp; $eTELLER</p>
-								<p class="animated fadeInUp" data-animate="fadeInUp" data-delay=".3" style="visibility: visible; animation-delay: 0.3s;"><i class="tc-primary">TOKEN TYPE:</i>&nbsp; UTILITY TOKEN</p>
-								<p class="animated fadeInUp" data-animate="fadeInUp" data-delay=".3" style="visibility: visible; animation-delay: 0.3s;"><i class="tc-primary">TOTAL SUPPLY:</i>&nbsp; 500,000,000 $eTELLER</p>
-								<p class="animated fadeInUp" data-animate="fadeInUp" data-delay=".3" style="visibility: visible; animation-delay: 0.3s;"><i class="tc-primary">BLOCKCHAIN:</i>&nbsp; BINANCE CHAIN</p>
-								<p class="animated fadeInUp" data-animate="fadeInUp" data-delay=".3" style="visibility: visible; animation-delay: 0.3s;"><i class="tc-primary">TOKEN STANDARD:</i>&nbsp; BEP 20</p>
-							</div>
-							<div class="row align-items-center justify-content-between gutter-vr-30px">
-								<div class="col-lg-6">
-									<div class="single-chart text-center"><h5 class="title title-md" animated="" fadeinup"="" data-animate="fadeInUp" data-delay=".1" style="visibility: visible; animation-delay: 0.1s;">Token Distribution</h5><div class="chart animated fadeInUp" data-animate="fadeInUp" data-delay=".2" style="visibility: visible; animation-delay: 0.2s;"><img src="{% static 'pwa/images/chart-k-dark.png' %}" alt="chart"></div></div>
 
-								</div>
-								
-								<div class="col-lg-5">
-									<div class="row gutter-vr-30px">
-										<div class="col-sm-6">
-											<div class="stage-info animated fadeInUp" data-animate="fadeInUp" data-delay=".4" style="visibility: visible; animation-delay: 0.4s;">
-												<h6 class="title title-s6 title-xs-s2">Developers</h6><p>‭25,000,000‬ $eTELLER (5%)</p>
-											</div>
-										</div>
-									<!-- .col  -->
-										<div class="col-sm-6">
-											<div class="stage-info animated fadeInUp" data-animate="fadeInUp" data-delay=".5" style="visibility: visible; animation-delay: 0.5s;">
-												<h6 class="title title-s6 title-xs-s2">Partners</h6><p>25,000,000‬ $eTELLER (5%)</p>
-											</div>
-										</div>
-									<!-- .col  -->
-										<div class="col-sm-6">
-											<div class="stage-info animated fadeInUp" data-animate="fadeInUp" data-delay=".6" style="visibility: visible; animation-delay: 0.6s;">
-												<h6 class="title title-s6 title-xs-s2">Airdrop, Incentives & Rewards</h6><p>50,000,000‬ $eTELLER (10%)</p>
-											</div>
-										</div>
-									<!-- .col  -->
-										<div class="col-sm-6">
-											<div class="stage-info animated fadeInUp" data-animate="fadeInUp" data-delay=".7" style="visibility: visible; animation-delay: 0.7s;">
-												<h6 class="title title-s6 title-xs-s2">Foundation</h6><p>100,000,000‬ $eTELLER (20%)</p>
-											</div>
-										</div>
-									<!-- .col  -->
-										<div class="col-sm-6">
-											<div class="stage-info animated fadeInUp" data-animate="fadeInUp" data-delay=".8" style="visibility: visible; animation-delay: 0.8s;">
-												<h6 class="title title-s6 title-xs-s2">Private Sale</h6><p>100,000,000‬ $eTELLER (20%)</p>
-											</div>
-										</div>
-									<!-- .col  -->
-										<div class="col-sm-6">
-											<div class="stage-info animated fadeInUp" data-animate="fadeInUp" data-delay=".9" style="visibility: visible; animation-delay: 0.9s;">
-												<h6 class="title title-s6 title-xs-s2">CrowdSale</h6><p>200,000,000‬ $eTELLER (40%)</p>
-											</div>
-										</div>
-									<!-- .col  -->
-									</div>
-									<!-- .row  -->
-								</div>				
+					<!-- Feature Icons -->
+					<div id="roadmap" class="row feature-icons" data-aos="fade-up">
+					  <h3>Roadmap</h3>
+
+					  <div class="row">
+
+						<div class="col-xl-12 d-flex content">
+						  <div class="row align-self-center gy-4">
+
+							<div class="col-md-4 icon-box" data-aos="fade-up">
+							  <div>
+								<h4>Q2 2021 (Concept Development)</h4>
+								<li>Deep technical research</li>
+								<li>project modeling</li>
+							  </div>
 							</div>
+
+							<div class="col-md-4 icon-box" data-aos="fade-up" data-aos-delay="100">
+							  <div>
+								<h4>Q3 2021 (Teaming Up)</h4>
+								<li>Assembling team members</li>
+								<li>Project development commences</li>
+							  </div>
+							</div>
+
+							<div class="col-md-4 icon-box" data-aos="fade-up" data-aos-delay="200">
+							  <div>
+								<h4>Q4 2021 (Development)</h4>
+								<li>Smart Contract development</li>
+								<li>Airdrop Bot development</li>
+								<li>Teller Paper commences</li>
+								<li>ICO Platform development begins</li>
+								<li>Web app development starts</li>
+							  </div>
+							</div>
+
+							<div class="col-md-4 icon-box" data-aos="fade-up" data-aos-delay="300">
+							 <div>
+								<h4>Q1 2022 (Community Building)</h4>
+								<li>Community Building</li>
+								<li>Create Social Handles</li>
+								<li>Website goes live</li>
+								<li>Airdrop begins</li>
+								<li>PR Campaigns</li>
+								<li>20,000 active community members</li>
+								<li>Teller Paper release</li>
+							  </div>
+							</div>
+
+							<div class="col-md-4 icon-box" data-aos="fade-up" data-aos-delay="400">
+							  <div>
+								<h4>Q2 2022 (ICO & Mainnet)</h4>
+								<li>$eTELLER Token contract address public</li>
+								<li>Private Sale begins</li>
+								<li>Private Sale ends</li>
+								<li>ICO Platform launch and crowdsale starts</li>
+								<li>ICO Completed</li>
+								<li>Token distribution commences</li>
+								<li>Dex and Cex listing</li>
+								<li>Mainnet lunch & Public trading begins</li>
+								<li>Teller Multi service App development starts</li>
+							  </div>
+							</div>
+
+							<div class="col-md-4 icon-box" data-aos="fade-up" data-aos-delay="500">
+							  <div>
+								<h4>Q3 2022 (Post Mainnet)</h4>
+								<li>Teller App released</li>
+								<li>Teller Payment Service Lunched</li>
+								<li>Merchant Payment Gateway released</li>
+								<li>Token distribution continues</li>
+								<li>First brand Innovative blockchain contest event</li>
+								<li>strategic partnerships</li>
+								<li>Build global Community</li>
+								<li>100,000 $eTELLER holders</li>
+								<li>Massive marketing campaign</li>
+								<li>Listing on Major Exchanges</li>
+								<li>More $eTELLER adoptation</li>
+								<li>More service roll out</li>
+							  </div>
+							</div>
+							
+							<div class="col-md-4 icon-box" data-aos="fade-up" data-aos-delay="500">
+							  <div>
+								<h4>Q4 2022 (Taking Over En route)</h4>
+								<li>1,000,000 Active community members</li>
+								<li>500,000 App downloads</li>
+								<li>50,000 Service nodes integration</li>
+								<li>More partnerships</li>
+								<li>More listing on Major Exchanges</li>
+								<li>Token distribution continues</li>
+								<li>Teller Service Tour Africa</li>
+								<li>Massive $eTELLER adoptation</li>
+
+							  </div>
+							</div>
+
+						  </div>
 						</div>
-						<!-- .block @e -->
-					</div>
-				<!-- .section-tokensale -->
-					<div class="ui-mask-left ui-mask-s3"></div>
-				</section>
-				<section class="section-intro bg-theme-alt tc-light pb-0 ov-h" id="airdrop">				
-					<div class="container">
-						<div class="nk-block nk-block-about">
-							<div class="row align-items-center justify-content-center justify-content-lg-between gutter-vr-30px">
-								<div class="col-lg-9 col-sm-9 pdb-m">
-									<div class="nk-block-text text-lg-left">
-										<h6 class="title title-xs title-s1 tc-primary animated" data-animate="fadeInUp" data-delay=".1">Escrow Teller Airdrop</h6>
-										<h2 class="title title-semibold animated" data-animate="fadeInUp" data-delay=".2">Get free $eTELLER airdrop tokens when you complete very simple tasks.</h2>
-										<p class="lead-s2 animated" data-animate="fadeInUp" data-delay=".3">AIRDROP TERMS & CONDITIONS</p>
-										<p class="animated" data-animate="fadeInUp" data-delay=".4">
 
-										This Airdrop is carried out by Escrow Teller for the soul purpose of rewarding participants with $eTELLER tokens.
+					  </div>
 
-										Every participant is entitled to a single subscription to this airdrop campaign.
-										Every participant must complete all required tasks as specified to be egible to receive $eTELLER tokens.
-										Anyone found cheating or has failed to complete their aidrop campaign will be automatically disqualified.
+					</div><!-- End Feature Icons -->
 
-										To receive airdrop tokens after the campaign, participants must remain connected to our specified social channels, failure to do so will lead to automatic disqualification.
 
-										This airdrop does not constitute an offer of any Security or regulated product in any jurisdiction.
+				  </div>
 
-										This airdrop campaign must not be taken part by participants in any  jurisdiction  where  distribution of airdrop tokens  is  prohibited  or  restricted, we are not liable for any violation of this warning.
-
-										Escrow Teller reserves the right to cancel or amend this Airdrop rules and the specifications, terms and conditions at anytime without prejudice.
-
-										By participating is this airdrop, you consent to have read, understood and agreed to be bound by this Airdrop Rules and you acknowledge and agree to be legally bound by these Airdrop Rules without limitation or qualification. You further agree that all decisions of the Escrow Teller Team shall be final and conclusive.
-										</p>
-										<div class="nk-block mt-auto pdb-r"></div>
-									</div>
-								</div>
-							</div>
-						</div>
+				</section><!-- End Features Section -->
+				
+				
+					<section id="airdrop" class="features">
+					<div class="container" data-aos="fade-up">
+				<!-- Feature Tabs -->
+					<div class="row feture-tabs" style="margin-top:1px!important;" data-aos="fade-up">
+					  <div class="col-lg-6">
+						<h3>Participate in our airdrop, get free $eTELLER airdrop tokens when you complete very simple tasks..</h3>
 						
-					</div>
-					<!-- .block @e -->
-				<!-- .conatiner  --><div class="ui-mask-left ui-mask-s1"></div>
-				</section>
-		
-			<!-- // -->
-				<section class="section bg-theme tc-light pb-0 ov-h" id="roadmap">
-					<div class="container">
-						<div class="section-head section-head-s3 wide-auto-sm text-center">
-							<h6 class="title title-xs title-s1 tc-primary animated" data-animate="fadeInUp" data-delay=".1">Roadmap</h6>
-							<h2 class="title animated" data-animate="fadeInUp" data-delay=".2">Timeline</h2>
-						</div>
-					<!-- Block @s -->
-						<div class="nk-block nk-block-roadmap">
-							<div class="row justify-content-center">
-								<div class="col-xl-10">
-									<div class="roadmap-wrap">
-										<div class="roadmap-line"></div>
-										<div class="roadmap animated fadeInUp" data-animate="fadeInUp" data-delay=".4" style="visibility: visible; animation-delay: 0.4s;">
-											<div class="roadmap-year">2021</div>
-										</div>
-										<div class="roadmap roadmap-right roadmap-finished animated fadeInUp" data-animate="fadeInUp" data-delay=".5" style="visibility: visible; animation-delay: 0.5s;">
-											<div class="roadmap-step">
-												<div class="roadmap-head">
-													<span class="roadmap-time">June 2021</span>
-													<span class="roadmap-title">Concept development</span>
-												</div>
-												<ul class="list list-dot">
-													<li>Deep technical research</li>
-													<li>project modeling</li>
-												</ul>
-											</div>
-										</div>
-										<div class="roadmap roadmap-left roadmap-finished animated fadeInUp" data-animate="fadeInUp" data-delay=".6" style="visibility: visible; animation-delay: 0.6s;">
-											<div class="roadmap-step">
-												<div class="roadmap-head">
-													<span class="roadmap-time">Q3 2021</span>
-													<span class="roadmap-title">Teaming Up</span>
-												</div>
-												<ul class="list list-dot">
-													<li>Assembling team members</li>
-													<li>Project development commences</li>
-												</ul>
-											</div>
-										</div>
-										<div class="roadmap roadmap-right roadmap-finished animated fadeInUp" data-animate="fadeInUp" data-delay=".5" style="visibility: visible; animation-delay: 0.5s;">
-											<div class="roadmap-step">
-												<div class="roadmap-head">
-													<span class="roadmap-time">Q4 2021</span>
-													<span class="roadmap-title">Development</span>
-												</div>
-												<ul class="list list-dot">
-													<li>Smart Contract development</li>
-													<li>Airdrop Bot development</li>
-													<li>Teller Paper commences</li>
-													<li>ICO Platform development begins</li>
-													<li>Web app development starts</li>
-												</ul>
-											</div>
-										</div>
-										<div class="roadmap-line"></div>
-										<div class="roadmap animated fadeInUp" data-animate="fadeInUp" data-delay=".4" style="visibility: visible; animation-delay: 0.4s;">
-											<div class="roadmap-year">2022</div>
-										</div>
-										<div class="roadmap roadmap-left animated fadeInUp" data-animate="fadeInUp" data-delay=".6" style="visibility: visible; padding-top:60px; animation-delay: 0.6s;">
-											<div class="roadmap-step">
-												<div class="roadmap-head">
-													<span class="roadmap-time">Q1 2022</span>
-													<span class="roadmap-title">Community Building</span>
-												</div>
-												<ul class="list list-dot">
-													<li>Create Social Handles</li>
-													<li>Website goes live</li>
-													<li>Airdrop begins</li>
-													<li>PR Campaigns</li>
-													<li>20,000 active community members</li>
-													<li>Teller Paper release</li>
-												</ul>
-											</div>
-										</div>
-										<div class="roadmap roadmap-right animated fadeInUp" data-animate="fadeInUp" data-delay=".5" style="visibility: visible; animation-delay: 0.5s;">
-											<div class="roadmap-step">
-												<div class="roadmap-head">
-													<span class="roadmap-time">Q2 2022</span>
-													<span class="roadmap-title">ICO & Mainnet</span>
-												</div>
-												<ul class="list list-dot">
-													<li>$eTELLER Token contract address public</li>
-													<li>Private Sale begins</li>
-													<li>Private Sale ends</li>
-													<li>ICO Platform launch and crowdsale starts</li>
-													<li>ICO Completed</li>
-													<li>Token distribution commences</li>
-													<li>Dex and Cex listing</li>
-													<li>Mainnet lunch & Public trading begins</li>
-													<li>Teller Multi service App development starts</li>
-													
-												</ul>
-											</div>
-										</div>
-										<div class="roadmap roadmap-left animated fadeInUp" data-animate="fadeInUp" data-delay=".6" style="visibility: visible; padding-top:60px; animation-delay: 0.6s;">
-											<div class="roadmap-step">
-												<div class="roadmap-head">
-													<span class="roadmap-time">Q3 2022</span>
-													<span class="roadmap-title">Post Mainnet</span>
-												</div>
-												<ul class="list list-dot">
-													<li>Teller App released</li>
-													<li>Teller Payment Service Lunched</li> 
-													<li>Merchant Payment Gateway released</li> 
-													<li>Token distribution continues</li>
-													<li>First brand Innovative blockchain contest event</li>
-													<li>strategic partnerships</li>
-													<li>Build global Community</li>
-													<li>100,000 $eTELLER holders</li>
-													<li>Massive marketing campaign</li>
-													<li>Listing on Major Exchanges</li>
-													<li>More $eTELLER adoptation</li>
-													<li>More service roll out</li>
-												</ul>
-											</div>
-										</div>
-										<div class="roadmap roadmap-right animated fadeInUp" data-animate="fadeInUp" data-delay=".5" style="visibility: visible; animation-delay: 0.5s;">
-											<div class="roadmap-step">
-												<div class="roadmap-head">
-													<span class="roadmap-time">Q4 2022</span>
-													<span class="roadmap-title">Taking Over En route</span>
-												</div>
-												<ul class="list list-dot">
-													<li>All Teller Services lunched</li>
-													<li>1,000,000 Active community members</li>
-													<li>500,000 App downloads</li>
-													<li>50,000 Service nodes integration</li>
-													<li>More partnerships</li>
-													<li>More listing on Major Exchanges</li>
-													<li>Token distribution continues</li>
-													<li>Teller Service Tour Africa</li>
-													<li>Massive $eTELLER adoptation</li>
-												</ul>
-											</div>
-										</div>
-										
-									</div>
-								</div>
-						<!-- .col -->
-							</div>
-						<!-- .row -->
-							<div class="text-center animated fadeInUp" data-animate="fadeInUp" data-delay=".4" style="visibility: visible; animation-delay: 0.4s;"></div>
-						</div>
-					<!-- .block @e -->
+						<p>This Airdrop is carried out by Escrow Teller for the soul purpose of rewarding participants with $eTELLER tokens. Every participant is entitled to a single subscription to this airdrop campaign. Every participant must complete all required tasks as specified to be egible to receive $eTELLER tokens. Anyone found cheating or has failed to complete their aidrop campaign will be automatically disqualified. To receive airdrop tokens after the campaign, participants must remain connected to our specified social channels, failure to do so will lead to automatic disqualification. This airdrop does not constitute an offer of any Security or regulated product in any jurisdiction. This airdrop campaign must not be taken part by participants in any jurisdiction where distribution of airdrop tokens is prohibited or restricted, we are not liable for any violation of this warning. Escrow Teller reserves the right to cancel or amend this Airdrop rules and the specifications, terms and conditions at anytime without prejudice. By participating is this airdrop, you consent to have read, understood and agreed to be bound by this Airdrop Rules and you acknowledge and agree to be legally bound by these Airdrop Rules without limitation or qualification. You further agree that all decisions of the Escrow Teller Team shall be final and conclusive.</p>
+
+					  </div>
+
+					  <div class="col-lg-6">
+						<img src="{% static 'pwa/img/features-2.png' %}" class="img-fluid" alt="">
+					  </div>
+
+					</div><!-- End Feature Tabs -->
 					</div>
 				</section>
-			<!-- // -->
-			</main>
-			<!-- .footer @s -->
-			<footer class="nk-footer bg-theme-dark has-ovm"><hr class="hr hr-white-5 my-0">
-				<section class="section section-m bg-transparent tc-light ov-v">
-					<div class="container">
-					<!-- Block @s -->
-						<div class="nk-block block-footer">
-							<div class="justify-content-between gutter-vr-30px">
-								<div class="col-lg-4 col-sm-6">
-									<div class="wgs wgs-menu">
-										<ul class="social">
-											<li class="animated fadeInUp" data-animate="fadeInUp" data-delay=".25" style="visibility: visible; animation-delay: 0.25s;">
-												<a href="https://www.facebook.com/escrowteller"><em class="fab fa-facebook-f"></em></a>
-											</li>
-											<li class="animated fadeInUp" data-animate="fadeInUp" data-delay=".3" style="visibility: visible; animation-delay: 0.3s;">
-												<a href="https://www.twitter.com/escrow_teller"><em class="fab fa-twitter"></em></a>
-											</li>
-											<li class="animated fadeInUp" data-animate="fadeInUp" data-delay=".35" style="visibility: visible; animation-delay: 0.35s;">
-												<a href="#"><em class="fab fa-medium-m"></em></a>
-											</li>
-											<li class="animated fadeInUp" data-animate="fadeInUp" data-delay=".45" style="visibility: visible; animation-delay: 0.45s;">
-												<a href="https://t.me/eteller_channel"><em class="fab fa-telegram-plane"></em></a>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div class="footer-bottom pdt-l">
-									<div class="row justify-content-center">
-										<div class="col-lg-7">
-											<div class="copyright-text copyright-text-s3">
-												<p><span class="d-block">Copyright © 2022, Escrow Teller.</span> All rights reserved.</p>
-											</div>
-										</div>										
-									</div>
-								</div>
-								<!-- .row -->
-							</div>
-					<!-- .block @e -->
-						</div>
-				</section><div class="nk-ovm shape-t h-75"></div>
-			</footer>
-			<!-- .footer @e -->
-		</div>
-		<a href="#" id="back-to-top" class="show fal fa-long-arrow-up"></a>
-		<div class="preloader preloader-alt no-split">
-			<span class="spinner spinner-alt">
-				<img class="spinner-brand" src="{% static 'pwa/images/logo-s2-white.png' %}" alt="">
-			</span>
-		</div>
-		</div>
-	
+
+			   
+			  </main><!-- End #main -->
+
+			  <!-- ======= Footer ======= -->
+			  <footer id="footer" class="footer">   
+				<div class="container">
+				  <div class="copyright">
+					&copy; Copyright <strong><span>Escrow Teller</span></strong>. All Rights Reserved
+				  </div>      
+				</div>
+			  </footer><!-- End Footer -->
+
+			  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
 		{% endblock main %}
 
 		{% block extrascripts %}
-			<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-			<script src="{% static 'pwa/js/jquery.min.js' %}"></script>
-			<script src="{% static 'pwa/js/angular.js' %}"></script>
-			<script src="{% static 'pwa/js/jquery-bundle.js' %}"></script>
-			<script src="{% static 'pwa/js/scripts.js' %}"></script>
-			<script src="{% static 'pwa/js/back-to-top.js' %}"></script>
-			<script src="{% static 'pwa/js/bg_particles.js' %}" ></script>
-			<script src="{% static 'pwa/js/smooth_page_scroll.js' %}" ></script>
-			<script src="{% static 'pwa/js/jquery.collapser.js' %}"></script>
-			<script src="{% static 'pwa/js/bg_particles-control.js' %}"></script>
-			<script src="{% static 'pwa/js/truncate.js' %}"></script>
+			<!-- Vendor JS Files -->
+			  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+			<!-- Template Main JS File -->
+			  <script src="{% static 'pwa/js/main.js' %}"></script>
 		{% endblock extrascripts %}
 		
 		{% pwa_meta_script %}

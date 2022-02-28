@@ -55,14 +55,14 @@ def get_pwa_config():
 		],
 		"lang": "en",
 		"dir": "ltr",
-		"description": "Progressive Web app powerd by Django",
+		"description": "Blockchain Payment, Data Management & Security Service",
 		"version": "1.",
 		"manifest_version": "1.0",
 		"permissions": [
 			"notifications",
 			"webRequest"
 		],
-		"author": "PWA-django"
+		"author": "eTeller"
 		}
 	try:
 		if settings.PWA_CONFIG and settings.PWA_CONFIG != {}:
@@ -74,32 +74,28 @@ def get_pwa_config():
 
 def get_service_worker():
 	SERVICE_WORKER = """
-	var CACHE_NAME = 'pwa-cache-v1';
+	var CACHE_NAME = 'eteller-v1';
 	var urlsToCache = [
 		'/',
 		'/sw.js',
 		'/app.js',
 		'/manifest.json',
 		'/offline',
-		'/static/pwa/images/dino.gif',
-
-		'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css',
-		'https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js',
-		'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js',
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css',
-		'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
-        '/static/pwa/css/smooth-scrow.css',
-		'/static/pwa/css/back-to-top.css',
-		'/static/pwa/js/jquery.min.js',
-        '/static/pwa/js/angular.js',
-		'/static/pwa/js/jquery-bundle.js',
-		'/static/pwa/js/scripts.js',
-		'/static/pwa/js/back-to-top.js',
-		'/static/pwa/js/bg_particles.js',
-		'/static/pwa/js/smooth_page_scroll.js',
-		'/static/pwa/js/jquery.collapser.js',
-        '/static/pwa/css/vendor-bundle.css',
-		'/static/pwa/css/style-azure.css',
+        '/static/pwa/img/favicon.png',
+		'/static/pwa/img/apple-touch-icon.png',        'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css',
+		'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css',
+        '/static/pwa/css/style.css',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js',
+        '/static/pwa/js/main.js',
+        '/static/pwa/img/logo.png',
+        '/static/pwa/img/hero-img.png',
+        '/static/pwa/img/values-1.png',
+        '/static/pwa/img/values-2.png',
+        '/static/pwa/img/values-3.png',
+        '/static/pwa/img/features-3.png',
+        '/static/pwa/img/features-2.png',
+        '/static/pwa/img/hero-bg.png',
 		];
 	const self = this;
 	
@@ -158,7 +154,7 @@ def get_app():
 			.catch(err => console.log("Your browser support service worker but service worker not registered.", err));
 			});
 		} else {
-			console.log(`Your browser Dosn't Support serviceWorker, so you can'n install PWA.`);
+			console.log(`Your browser Dosn't Support serviceWorker, so you can't install PWA.`);
 		};
 	"""
 	try:
